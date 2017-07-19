@@ -208,13 +208,14 @@
             // 
             // trackWave
             // 
-            this.trackWave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.trackWave.LargeChange = 1;
             this.trackWave.Location = new System.Drawing.Point(754, 13);
             this.trackWave.Name = "trackWave";
             this.trackWave.Size = new System.Drawing.Size(134, 56);
-            this.trackWave.TabIndex = 7;
+            this.trackWave.TabIndex = 4;
+            this.trackWave.Value = 10;
             this.trackWave.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackWave.ValueChanged += new System.EventHandler(this.trackWave_ValueChanged);
             // 
             // NowPlaying
             // 

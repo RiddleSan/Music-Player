@@ -19,11 +19,6 @@ namespace WindowsFormsApplication2
     
     public partial class Form1 : Form
     {
-        [DllImport("winmm.dll")]
-        public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
-        [DllImport("winmm.dll")]
-        public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
-
 
 
         string lastMusicPath;
@@ -40,15 +35,7 @@ namespace WindowsFormsApplication2
         public Form1()
         {
             InitializeComponent();
-            // By the default set the volume to 0
-            uint CurrVol = 0;
-            // At this point, CurrVol gets assigned the volume
-            waveOutGetVolume(IntPtr.Zero, out CurrVol);
-            // Calculate the volume
-            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
-            // Get the volume on a scale of 1 to 10 (to fit the trackbar)
-            trackWave.Value = CalcVol / (ushort.MaxValue / 10);
-
+            
             checkBox1.Hide();
         }
 
@@ -107,6 +94,7 @@ namespace WindowsFormsApplication2
 
         private void SearchSong_Click(object sender, EventArgs e)
         {
+            file.Filter = "MP3 File |*.mp3|WAV File |*.wav|AAC File |*.aac|M4A File |*.m4a|WMA File |*.wma";
             
             if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -155,12 +143,13 @@ namespace WindowsFormsApplication2
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            // Calculate the volume that's being set. BTW: this is a trackbar!
-            int NewVolume = ((ushort.MaxValue / 10) * trackWave.Value);
-            // Set the same volume for both the left and the right channels
-            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
-            // Set the volume
-            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+            
+        }
+
+        private void trackWave_ValueChanged(object sender, EventArgs e)
+        {
+            if (Controller != null && trackWave != null)
+                Controller.settings.volume = trackWave.Value * 10;
         }
     }
 }
