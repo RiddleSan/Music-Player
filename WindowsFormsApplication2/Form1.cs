@@ -119,7 +119,11 @@ namespace WindowsFormsApplication2
             if(folder.ShowDialog() == DialogResult.OK)
             {
                 FolderMusicPath = folder.SelectedPath;
-                MusicInFolder = Directory.GetFiles(FolderMusicPath);
+                MusicInFolder = Directory.GetFiles(FolderMusicPath, "*.mp3", SearchOption.AllDirectories);
+                Musics = Path.GetFileName(MusicInFolder.ToString());
+                listBox1.Items.AddRange(MusicInFolder);
+
+                MusicInFolder = Directory.GetFiles(FolderMusicPath, "*.aac", SearchOption.AllDirectories);
                 Musics = Path.GetFileName(MusicInFolder.ToString());
                 listBox1.Items.AddRange(MusicInFolder);
             }
