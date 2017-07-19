@@ -30,6 +30,7 @@ namespace WindowsFormsApplication2
         string lastMusicName;
         string FolderMusicPath;
         string[] MusicInFolder;
+        string[] AMusicName;
         string Musics;
         SoundPlayer soundPlayer;
         OpenFileDialog file = new OpenFileDialog();
@@ -47,17 +48,8 @@ namespace WindowsFormsApplication2
             ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
             // Get the volume on a scale of 1 to 10 (to fit the trackbar)
             trackWave.Value = CalcVol / (ushort.MaxValue / 10);
+
             checkBox1.Hide();
-        }
-
-        private void Sound_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Pause_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Play_Click(object sender, EventArgs e)
@@ -72,6 +64,7 @@ namespace WindowsFormsApplication2
                 {
                     Controller.URL = lastMusicPath;
                     Controller.controls.play();
+                    NowPlaying.Text = "Now Playing: " + lastMusicName;
                 }
                 else
                 {
@@ -128,15 +121,7 @@ namespace WindowsFormsApplication2
             }
                 
         }
-
-        private void trackWave_Scroll(object sender, EventArgs e)
-        {
-            int NewVolume = ((ushort.MaxValue / 10) * trackWave.Value);
-            // Set the same volume for both the left and the right channels
-            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
-            // Set the volume
-            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
-        }
+        
 
         private void SearchFolder_Click(object sender, EventArgs e)
         {
@@ -157,12 +142,25 @@ namespace WindowsFormsApplication2
             if (listBox1.SelectedIndex != -1)
             {
                 lastMusicPath = listBox1.SelectedItem.ToString();
-                SongName.Text = lastMusicPath;
                 soundPlayer = new SoundPlayer(lastMusicPath);
                 checkBox1.Checked = false;
+                
+                lastMusicName = System.IO.Path.GetFileNameWithoutExtension(lastMusicPath);
+                //lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
+                AMusicName = lastMusicName.Split('\\');
+                lastMusicName = AMusicName.Last();
+                SongName.Text = "Selected Song: " + lastMusicName.Replace("_", " ");
             }
         }
 
-        
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            // Calculate the volume that's being set. BTW: this is a trackbar!
+            int NewVolume = ((ushort.MaxValue / 10) * trackWave.Value);
+            // Set the same volume for both the left and the right channels
+            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
+            // Set the volume
+            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+        }
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Pause = new System.Windows.Forms.PictureBox();
-            this.trackWave = new System.Windows.Forms.TrackBar();
             this.Play = new System.Windows.Forms.PictureBox();
             this.Stop = new System.Windows.Forms.PictureBox();
             this.SongName = new System.Windows.Forms.Label();
@@ -43,21 +42,23 @@
             this.SearchFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.trackWave = new System.Windows.Forms.TrackBar();
+            this.NowPlaying = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Settings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.Pause);
             this.panel1.Controls.Add(this.trackWave);
+            this.panel1.Controls.Add(this.Pause);
             this.panel1.Controls.Add(this.Play);
             this.panel1.Controls.Add(this.Stop);
             this.panel1.Location = new System.Drawing.Point(88, 604);
@@ -76,15 +77,6 @@
             this.Pause.TabIndex = 6;
             this.Pause.TabStop = false;
             this.Pause.Click += new System.EventHandler(this.Pause_Click_1);
-            // 
-            // trackWave
-            // 
-            this.trackWave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.trackWave.Location = new System.Drawing.Point(744, 13);
-            this.trackWave.Name = "trackWave";
-            this.trackWave.Size = new System.Drawing.Size(144, 56);
-            this.trackWave.TabIndex = 4;
-            this.trackWave.Scroll += new System.EventHandler(this.trackWave_Scroll);
             // 
             // Play
             // 
@@ -118,9 +110,9 @@
             this.SongName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.SongName.Location = new System.Drawing.Point(12, 446);
             this.SongName.Name = "SongName";
-            this.SongName.Size = new System.Drawing.Size(147, 29);
+            this.SongName.Size = new System.Drawing.Size(178, 29);
             this.SongName.TabIndex = 5;
-            this.SongName.Text = "Music Name";
+            this.SongName.Text = "Selected Song:";
             // 
             // pictureBox1
             // 
@@ -214,12 +206,35 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // trackWave
+            // 
+            this.trackWave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.trackWave.LargeChange = 1;
+            this.trackWave.Location = new System.Drawing.Point(754, 13);
+            this.trackWave.Name = "trackWave";
+            this.trackWave.Size = new System.Drawing.Size(134, 56);
+            this.trackWave.TabIndex = 7;
+            this.trackWave.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // NowPlaying
+            // 
+            this.NowPlaying.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NowPlaying.AutoSize = true;
+            this.NowPlaying.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NowPlaying.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.NowPlaying.Location = new System.Drawing.Point(12, 495);
+            this.NowPlaying.Name = "NowPlaying";
+            this.NowPlaying.Size = new System.Drawing.Size(160, 29);
+            this.NowPlaying.TabIndex = 6;
+            this.NowPlaying.Text = "Now Playing: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1170, 679);
+            this.Controls.Add(this.NowPlaying);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.SongName);
             this.Controls.Add(this.listBox1);
@@ -233,12 +248,12 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +265,6 @@
         private System.Windows.Forms.PictureBox Play;
         private System.Windows.Forms.PictureBox Stop;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TrackBar trackWave;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label SongName;
         private System.Windows.Forms.Label LabelSearch;
@@ -260,6 +274,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TrackBar trackWave;
+        private System.Windows.Forms.Label NowPlaying;
     }
 }
 
