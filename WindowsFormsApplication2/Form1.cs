@@ -41,6 +41,7 @@ namespace WindowsFormsApplication2
 
         private void Play_Click(object sender, EventArgs e)
         {
+            Controller.URL = lastMusicPath;
             if (lastMusicPath == "" || lastMusicPath == null)
             {
 
@@ -49,6 +50,7 @@ namespace WindowsFormsApplication2
             {
                 if (checkBox1.Checked == false)
                 {
+
                     Controller.URL = lastMusicPath;
                     Controller.controls.play();
                     NowPlaying.Text = "Now Playing: " + lastMusicName;
@@ -100,8 +102,6 @@ namespace WindowsFormsApplication2
             {
                 lastMusicPath = Path.GetDirectoryName(file.FileName);
                 lastMusicPath = file.FileName;
-                Controller.URL = lastMusicPath;
-                Controller.controls.stop();
                 lastMusicName = System.IO.Path.GetFileNameWithoutExtension(file.FileName);
                 lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
                 SongName.Text = lastMusicName.Replace("_", " ");
@@ -154,6 +154,34 @@ namespace WindowsFormsApplication2
         {
             if (Controller != null && trackWave != null)
                 Controller.settings.volume = trackWave.Value * 10;
+        }
+
+        private void myPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 3)
+
+            {
+
+                double dur = Controller.currentMedia.duration;
+
+                MusicBar.Maximum = (int)dur;
+
+            }
+        }
+
+        private void MusicBar_Scroll(object sender, EventArgs e)
+        {
+           // MusicBar.Maximum = Convert.ToInt32(Controller.currentMedia.duration);
+            //MusicBar.Value = Convert.ToInt32(Controller.controls.currentPosition);
+        }
+
+        private void listBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+                    
+                
+                
+            
         }
     }
 }

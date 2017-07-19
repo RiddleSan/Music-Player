@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MusicBar = new System.Windows.Forms.ProgressBar();
+            this.trackWave = new System.Windows.Forms.TrackBar();
             this.Pause = new System.Windows.Forms.PictureBox();
             this.Play = new System.Windows.Forms.PictureBox();
             this.Stop = new System.Windows.Forms.PictureBox();
@@ -42,21 +44,21 @@
             this.SearchFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.trackWave = new System.Windows.Forms.TrackBar();
             this.NowPlaying = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Settings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.MusicBar);
             this.panel1.Controls.Add(this.trackWave);
             this.panel1.Controls.Add(this.Pause);
             this.panel1.Controls.Add(this.Play);
@@ -65,6 +67,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 80);
             this.panel1.TabIndex = 0;
+            // 
+            // MusicBar
+            // 
+            this.MusicBar.Location = new System.Drawing.Point(17, 22);
+            this.MusicBar.Name = "MusicBar";
+            this.MusicBar.Size = new System.Drawing.Size(719, 23);
+            this.MusicBar.TabIndex = 7;
+            // 
+            // trackWave
+            // 
+            this.trackWave.LargeChange = 1;
+            this.trackWave.Location = new System.Drawing.Point(754, 13);
+            this.trackWave.Name = "trackWave";
+            this.trackWave.Size = new System.Drawing.Size(134, 56);
+            this.trackWave.TabIndex = 4;
+            this.trackWave.Value = 10;
+            this.trackWave.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackWave.ValueChanged += new System.EventHandler(this.trackWave_ValueChanged);
             // 
             // Pause
             // 
@@ -139,6 +159,7 @@
             this.listBox1.Size = new System.Drawing.Size(1015, 304);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
             // 
             // LabelSearch
             // 
@@ -206,17 +227,6 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // trackWave
-            // 
-            this.trackWave.LargeChange = 1;
-            this.trackWave.Location = new System.Drawing.Point(754, 13);
-            this.trackWave.Name = "trackWave";
-            this.trackWave.Size = new System.Drawing.Size(134, 56);
-            this.trackWave.TabIndex = 4;
-            this.trackWave.Value = 10;
-            this.trackWave.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            this.trackWave.ValueChanged += new System.EventHandler(this.trackWave_ValueChanged);
-            // 
             // NowPlaying
             // 
             this.NowPlaying.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -248,13 +258,13 @@
             this.Text = "Mega Player";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackWave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,6 +287,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TrackBar trackWave;
         private System.Windows.Forms.Label NowPlaying;
+        private System.Windows.Forms.ProgressBar MusicBar;
     }
 }
 
