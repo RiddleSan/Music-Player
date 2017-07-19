@@ -125,6 +125,7 @@ namespace WindowsFormsApplication2
                 lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
                 SongName.Text = lastMusicName.Replace("_", " ");
                 listBox1.Items.Add(lastMusicPath);
+
             }
                 
         }
