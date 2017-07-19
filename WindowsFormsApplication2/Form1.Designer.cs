@@ -60,16 +60,16 @@
             this.panel1.Controls.Add(this.trackWave);
             this.panel1.Controls.Add(this.Play);
             this.panel1.Controls.Add(this.Stop);
-            this.panel1.Location = new System.Drawing.Point(88, 446);
+            this.panel1.Location = new System.Drawing.Point(88, 604);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 80);
+            this.panel1.Size = new System.Drawing.Size(1070, 80);
             this.panel1.TabIndex = 0;
             // 
             // Pause
             // 
             this.Pause.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Pause.Image = global::WindowsFormsApplication2.Properties.Resources.pause;
-            this.Pause.Location = new System.Drawing.Point(684, 13);
+            this.Pause.Location = new System.Drawing.Point(950, 13);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(50, 50);
             this.Pause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -80,7 +80,7 @@
             // trackWave
             // 
             this.trackWave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.trackWave.Location = new System.Drawing.Point(478, 13);
+            this.trackWave.Location = new System.Drawing.Point(744, 13);
             this.trackWave.Name = "trackWave";
             this.trackWave.Size = new System.Drawing.Size(144, 56);
             this.trackWave.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.Play.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Play.Image = global::WindowsFormsApplication2.Properties.Resources.playbutton;
-            this.Play.Location = new System.Drawing.Point(628, 13);
+            this.Play.Location = new System.Drawing.Point(894, 13);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(50, 50);
             this.Play.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -102,7 +102,7 @@
             // 
             this.Stop.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Stop.Image = global::WindowsFormsApplication2.Properties.Resources.Stop;
-            this.Stop.Location = new System.Drawing.Point(740, 13);
+            this.Stop.Location = new System.Drawing.Point(1006, 13);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(50, 50);
             this.Stop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,19 +112,21 @@
             // 
             // SongName
             // 
+            this.SongName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SongName.AutoSize = true;
-            this.SongName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SongName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SongName.Location = new System.Drawing.Point(437, 12);
+            this.SongName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SongName.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SongName.Location = new System.Drawing.Point(12, 446);
             this.SongName.Name = "SongName";
-            this.SongName.Size = new System.Drawing.Size(0, 29);
+            this.SongName.Size = new System.Drawing.Size(147, 29);
             this.SongName.TabIndex = 5;
+            this.SongName.Text = "Music Name";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.FEZ_04_512;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 459);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 617);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,9 +142,9 @@
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.Location = new System.Drawing.Point(17, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(564, 256);
+            this.listBox1.Size = new System.Drawing.Size(805, 304);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -178,7 +180,7 @@
             this.Settings.Controls.Add(this.LabelSearch);
             this.Settings.Location = new System.Drawing.Point(12, 12);
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(880, 428);
+            this.Settings.Size = new System.Drawing.Size(1146, 586);
             this.Settings.TabIndex = 5;
             this.Settings.Visible = false;
             // 
@@ -217,7 +219,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(904, 521);
+            this.ClientSize = new System.Drawing.Size(1170, 679);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.SongName);
             this.Controls.Add(this.listBox1);

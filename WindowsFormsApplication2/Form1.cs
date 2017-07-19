@@ -114,16 +114,17 @@ namespace WindowsFormsApplication2
 
         private void SearchSong_Click(object sender, EventArgs e)
         {
-            lastMusicPath = file.FileName;
+            
             if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                lastMusicPath = Path.GetDirectoryName(file.FileName);
                 lastMusicPath = file.FileName;
                 Controller.URL = lastMusicPath;
                 Controller.controls.stop();
                 lastMusicName = System.IO.Path.GetFileNameWithoutExtension(file.FileName);
                 lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
                 SongName.Text = lastMusicName.Replace("_", " ");
-                listBox1.Items.Add(lastMusicName.Replace("_", " "));
+                listBox1.Items.Add(lastMusicPath);
             }
                 
         }
