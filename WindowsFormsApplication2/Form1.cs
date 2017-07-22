@@ -20,6 +20,10 @@ namespace WindowsFormsApplication2
     public partial class Form1 : Form
     {
 
+        [DllImport("winmm.dll")]
+        internal static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+        [DllImport("winmm.dll")]
+        internal static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         string lastMusicPath;
         string lastMusicName;
@@ -43,15 +47,13 @@ namespace WindowsFormsApplication2
         {
             Controller.URL = lastMusicPath;
             if (lastMusicPath == "" || lastMusicPath == null)
-            {
+           {
 
             }
             else
             {
                 if (checkBox1.Checked == false)
                 {
-
-                    Controller.URL = lastMusicPath;
                     Controller.controls.play();
                     NowPlaying.Text = "Now Playing: " + lastMusicName;
                 }
@@ -59,13 +61,13 @@ namespace WindowsFormsApplication2
                 {
                     Controller.controls.play();
                 }
-                checkBox1.Checked = false;
             }
         }
 
         private void Pause_Click_1(object sender, EventArgs e)
         {
             Controller.controls.pause();
+            Controller.URL = "";
             checkBox1.Checked = true;
         }
 
@@ -81,11 +83,23 @@ namespace WindowsFormsApplication2
             {
                 Settings.Visible = false;
                 listBox1.Visible = true;
+                label1.Visible = true;
+                NowPlaying.Visible = true;
+                SongName.Visible = true;
+                LabelSearch.Visible = true;
+                SearchFolder.Visible = true;
+                SearchSong.Visible = true;
             }
             else
             {
                 Settings.Visible = true;
                 listBox1.Visible = false;
+                label1.Visible = false;
+                NowPlaying.Visible = false;
+                SongName.Visible = false;
+                LabelSearch.Visible = false;
+                SearchFolder.Visible = false;
+                SearchSong.Visible = false;
             }
         }
 
@@ -104,7 +118,7 @@ namespace WindowsFormsApplication2
                 lastMusicPath = file.FileName;
                 lastMusicName = System.IO.Path.GetFileNameWithoutExtension(file.FileName);
                 lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
-                SongName.Text = lastMusicName.Replace("_", " ");
+                SongName.Text = "Selected Song: " + lastMusicName.Replace("_", " ");
                 listBox1.Items.Add(lastMusicPath);
             }
                 
@@ -138,7 +152,6 @@ namespace WindowsFormsApplication2
                 checkBox1.Checked = false;
                 
                 lastMusicName = System.IO.Path.GetFileNameWithoutExtension(lastMusicPath);
-                //lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
                 AMusicName = lastMusicName.Split('\\');
                 lastMusicName = AMusicName.Last();
                 SongName.Text = "Selected Song: " + lastMusicName.Replace("_", " ");
@@ -147,7 +160,10 @@ namespace WindowsFormsApplication2
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            
+            uint CurrVol = ushort.MaxValue / 2;
+            ushort CalcVol = (ushort)(CurrVol & 0x0000ffff);
+            int NewVolume = ((ushort.MaxValue / 100) * trackWave.Value);
+            uint NewVolumeAllChannels = (((uint)NewVolume & 0x0000ffff) | ((uint)NewVolume << 16));
         }
 
         private void trackWave_ValueChanged(object sender, EventArgs e)
@@ -156,32 +172,10 @@ namespace WindowsFormsApplication2
                 Controller.settings.volume = trackWave.Value * 10;
         }
 
-        private void myPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            if (e.newState == 3)
-
-            {
-
-                double dur = Controller.currentMedia.duration;
-
-                MusicBar.Maximum = (int)dur;
-
-            }
-        }
-
-        private void MusicBar_Scroll(object sender, EventArgs e)
-        {
-           // MusicBar.Maximum = Convert.ToInt32(Controller.currentMedia.duration);
-            //MusicBar.Value = Convert.ToInt32(Controller.controls.currentPosition);
-        }
 
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-                    
-                
-                
-            
+        {  
+
         }
     }
 }

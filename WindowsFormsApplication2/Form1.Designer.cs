@@ -30,35 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.MusicBar = new System.Windows.Forms.ProgressBar();
             this.trackWave = new System.Windows.Forms.TrackBar();
             this.Pause = new System.Windows.Forms.PictureBox();
             this.Play = new System.Windows.Forms.PictureBox();
             this.Stop = new System.Windows.Forms.PictureBox();
             this.SongName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.LabelSearch = new System.Windows.Forms.Label();
             this.SearchSong = new System.Windows.Forms.Button();
-            this.Settings = new System.Windows.Forms.Panel();
             this.SearchFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.NowPlaying = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Settings = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.Settings.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.MusicBar);
             this.panel1.Controls.Add(this.trackWave);
             this.panel1.Controls.Add(this.Pause);
             this.panel1.Controls.Add(this.Play);
@@ -67,13 +64,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1070, 80);
             this.panel1.TabIndex = 0;
-            // 
-            // MusicBar
-            // 
-            this.MusicBar.Location = new System.Drawing.Point(17, 22);
-            this.MusicBar.Name = "MusicBar";
-            this.MusicBar.Size = new System.Drawing.Size(719, 23);
-            this.MusicBar.TabIndex = 7;
             // 
             // trackWave
             // 
@@ -134,18 +124,6 @@
             this.SongName.TabIndex = 5;
             this.SongName.Text = "Selected Song:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.FEZ_04_512;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 617);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // listBox1
             // 
             this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -156,7 +134,7 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(17, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(1015, 304);
+            this.listBox1.Size = new System.Drawing.Size(712, 304);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
@@ -165,7 +143,7 @@
             // 
             this.LabelSearch.AutoSize = true;
             this.LabelSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelSearch.Location = new System.Drawing.Point(16, 10);
+            this.LabelSearch.Location = new System.Drawing.Point(818, 5);
             this.LabelSearch.Name = "LabelSearch";
             this.LabelSearch.Size = new System.Drawing.Size(235, 32);
             this.LabelSearch.TabIndex = 0;
@@ -175,32 +153,17 @@
             // SearchSong
             // 
             this.SearchSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SearchSong.Location = new System.Drawing.Point(267, 10);
+            this.SearchSong.Location = new System.Drawing.Point(1066, 8);
             this.SearchSong.Name = "SearchSong";
             this.SearchSong.Size = new System.Drawing.Size(92, 32);
             this.SearchSong.TabIndex = 1;
             this.SearchSong.UseVisualStyleBackColor = false;
             this.SearchSong.Click += new System.EventHandler(this.SearchSong_Click);
             // 
-            // Settings
-            // 
-            this.Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Settings.Controls.Add(this.SearchFolder);
-            this.Settings.Controls.Add(this.label1);
-            this.Settings.Controls.Add(this.SearchSong);
-            this.Settings.Controls.Add(this.LabelSearch);
-            this.Settings.Location = new System.Drawing.Point(12, 12);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(1146, 586);
-            this.Settings.TabIndex = 5;
-            this.Settings.Visible = false;
-            // 
             // SearchFolder
             // 
             this.SearchFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SearchFolder.Location = new System.Drawing.Point(267, 60);
+            this.SearchFolder.Location = new System.Drawing.Point(1066, 46);
             this.SearchFolder.Name = "SearchFolder";
             this.SearchFolder.Size = new System.Drawing.Size(92, 32);
             this.SearchFolder.TabIndex = 3;
@@ -211,7 +174,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 55);
+            this.label1.Location = new System.Drawing.Point(818, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(242, 32);
             this.label1.TabIndex = 2;
@@ -220,7 +183,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(842, 15);
+            this.checkBox1.Location = new System.Drawing.Point(-1, -15);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(98, 21);
             this.checkBox1.TabIndex = 4;
@@ -235,9 +198,32 @@
             this.NowPlaying.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.NowPlaying.Location = new System.Drawing.Point(12, 495);
             this.NowPlaying.Name = "NowPlaying";
-            this.NowPlaying.Size = new System.Drawing.Size(160, 29);
+            this.NowPlaying.Size = new System.Drawing.Size(154, 29);
             this.NowPlaying.TabIndex = 6;
-            this.NowPlaying.Text = "Now Playing: ";
+            this.NowPlaying.Text = "Now Playing:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = global::WindowsFormsApplication2.Properties.Resources.FEZ_04_512;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 617);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // Settings
+            // 
+            this.Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Settings.Location = new System.Drawing.Point(12, 8);
+            this.Settings.Name = "Settings";
+            this.Settings.Size = new System.Drawing.Size(1146, 586);
+            this.Settings.TabIndex = 5;
+            this.Settings.Visible = false;
             // 
             // Form1
             // 
@@ -245,8 +231,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1170, 679);
+            this.Controls.Add(this.SearchFolder);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.NowPlaying);
+            this.Controls.Add(this.SearchSong);
             this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.LabelSearch);
             this.Controls.Add(this.SongName);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Settings);
@@ -263,8 +253,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.Settings.ResumeLayout(false);
-            this.Settings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,19 +263,18 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox Play;
         private System.Windows.Forms.PictureBox Stop;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label SongName;
         private System.Windows.Forms.Label LabelSearch;
         private System.Windows.Forms.Button SearchSong;
-        private System.Windows.Forms.Panel Settings;
         private System.Windows.Forms.Button SearchFolder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Pause;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TrackBar trackWave;
         private System.Windows.Forms.Label NowPlaying;
-        private System.Windows.Forms.ProgressBar MusicBar;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel Settings;
     }
 }
 
