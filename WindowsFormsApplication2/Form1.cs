@@ -31,6 +31,7 @@ namespace WindowsFormsApplication2
         string[] MusicInFolder;
         string[] AMusicName;
         string Musics;
+        bool selected;
         SoundPlayer soundPlayer;
         OpenFileDialog file = new OpenFileDialog();
         WindowsMediaPlayer Controller = new WindowsMediaPlayer();
@@ -39,21 +40,22 @@ namespace WindowsFormsApplication2
         public Form1()
         {
             InitializeComponent();
-            
             checkBox1.Hide();
         }
 
         private void Play_Click(object sender, EventArgs e)
         {
-            Controller.URL = lastMusicPath;
             if (lastMusicPath == "" || lastMusicPath == null)
-           {
+            {
 
             }
+
             else
             {
-                if (checkBox1.Checked == false)
+                if (checkBox1.Checked == false & Controller.URL == "")
                 {
+                    checkBox1.Checked = true;
+                    Controller.URL = lastMusicPath;
                     Controller.controls.play();
                     NowPlaying.Text = "Now Playing: " + lastMusicName;
                 }
@@ -66,9 +68,10 @@ namespace WindowsFormsApplication2
 
         private void Pause_Click_1(object sender, EventArgs e)
         {
-            Controller.controls.pause();
+            
             Controller.URL = "";
             checkBox1.Checked = true;
+            Controller.controls.pause();
         }
 
         private void Stop_Click(object sender, EventArgs e)
@@ -79,28 +82,28 @@ namespace WindowsFormsApplication2
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (Settings.Visible == true)
-            {
-                Settings.Visible = false;
-                listBox1.Visible = true;
-                label1.Visible = true;
-                NowPlaying.Visible = true;
-                SongName.Visible = true;
-                LabelSearch.Visible = true;
-                SearchFolder.Visible = true;
-                SearchSong.Visible = true;
-            }
-            else
-            {
-                Settings.Visible = true;
-                listBox1.Visible = false;
-                label1.Visible = false;
-                NowPlaying.Visible = false;
-                SongName.Visible = false;
-                LabelSearch.Visible = false;
-                SearchFolder.Visible = false;
-                SearchSong.Visible = false;
-            }
+            //if (Settings.Visible == true)
+            //{
+                //Settings.Visible = false;
+                //listBox1.Visible = true;
+                //label1.Visible = true;
+                //NowPlaying.Visible = true;
+                //SongName.Visible = true;
+                //LabelSearch.Visible = true;
+                //SearchFolder.Visible = true;
+                //SearchSong.Visible = true;
+            //}
+            //else
+            //{
+                //Settings.Visible = true;
+                //listBox1.Visible = false;
+                //label1.Visible = false;
+                //NowPlaying.Visible = false;
+                //SongName.Visible = false;
+                //LabelSearch.Visible = false;
+                //SearchFolder.Visible = false;
+                //SearchSong.Visible = false;
+            //}
         }
 
         private void LabelSearch_Click(object sender, EventArgs e)
@@ -130,7 +133,8 @@ namespace WindowsFormsApplication2
             FolderBrowserDialog folder = new FolderBrowserDialog();
             folder.Description = "Music Folder";
 
-            if(folder.ShowDialog() == DialogResult.OK)
+
+            if (folder.ShowDialog() == DialogResult.OK)
             {
                 FolderMusicPath = folder.SelectedPath;
                 MusicInFolder = Directory.GetFiles(FolderMusicPath, "*.mp3", SearchOption.AllDirectories);
@@ -172,10 +176,13 @@ namespace WindowsFormsApplication2
                 Controller.settings.volume = trackWave.Value * 10;
         }
 
-
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
         {  
 
+        }
+
+        private void SongName_Click(object sender, EventArgs e)
+        {
         }
     }
 }

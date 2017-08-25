@@ -43,7 +43,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.NowPlaying = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Settings = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackWave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pause)).BeginInit();
@@ -67,12 +66,12 @@
             // 
             // trackWave
             // 
-            this.trackWave.LargeChange = 1;
-            this.trackWave.Location = new System.Drawing.Point(754, 13);
+            this.trackWave.LargeChange = 2;
+            this.trackWave.Location = new System.Drawing.Point(714, 13);
             this.trackWave.Name = "trackWave";
-            this.trackWave.Size = new System.Drawing.Size(134, 56);
+            this.trackWave.Size = new System.Drawing.Size(174, 56);
             this.trackWave.TabIndex = 4;
-            this.trackWave.Value = 10;
+            this.trackWave.Value = 5;
             this.trackWave.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             this.trackWave.ValueChanged += new System.EventHandler(this.trackWave_ValueChanged);
             // 
@@ -123,6 +122,7 @@
             this.SongName.Size = new System.Drawing.Size(178, 29);
             this.SongName.TabIndex = 5;
             this.SongName.Text = "Selected Song:";
+            this.SongName.Click += new System.EventHandler(this.SongName_Click);
             // 
             // listBox1
             // 
@@ -130,11 +130,13 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Font = new System.Drawing.Font("Lucida Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.SystemColors.Window;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
+            this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(17, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(712, 304);
+            this.listBox1.Size = new System.Drawing.Size(712, 300);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
@@ -143,6 +145,7 @@
             // 
             this.LabelSearch.AutoSize = true;
             this.LabelSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelSearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.LabelSearch.Location = new System.Drawing.Point(818, 5);
             this.LabelSearch.Name = "LabelSearch";
             this.LabelSearch.Size = new System.Drawing.Size(235, 32);
@@ -174,6 +177,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(818, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(242, 32);
@@ -183,7 +187,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(-1, -15);
+            this.checkBox1.Location = new System.Drawing.Point(1038, 120);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(98, 21);
             this.checkBox1.TabIndex = 4;
@@ -214,34 +218,24 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Settings
-            // 
-            this.Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Settings.Location = new System.Drawing.Point(12, 8);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(1146, 586);
-            this.Settings.TabIndex = 5;
-            this.Settings.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1170, 679);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.SearchFolder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NowPlaying);
             this.Controls.Add(this.SearchSong);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.LabelSearch);
             this.Controls.Add(this.SongName);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.Settings);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -274,7 +268,6 @@
         private System.Windows.Forms.TrackBar trackWave;
         private System.Windows.Forms.Label NowPlaying;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel Settings;
     }
 }
 
