@@ -41,6 +41,7 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
             checkBox1.Hide();
+            NowPlaying.Hide();
         }
 
         private void Play_Click(object sender, EventArgs e)
@@ -52,12 +53,13 @@ namespace WindowsFormsApplication2
 
             else
             {
-                if (checkBox1.Checked == false & Controller.URL == "")
+                if (checkBox1.Checked == false )
                 {
                     checkBox1.Checked = true;
                     Controller.URL = lastMusicPath;
                     Controller.controls.play();
                     NowPlaying.Text = "Now Playing: " + lastMusicName;
+                    NowPlaying.Show();
                 }
                 else
                 {
@@ -69,7 +71,6 @@ namespace WindowsFormsApplication2
         private void Pause_Click_1(object sender, EventArgs e)
         {
             
-            Controller.URL = "";
             checkBox1.Checked = true;
             Controller.controls.pause();
         }
@@ -78,6 +79,7 @@ namespace WindowsFormsApplication2
         {
             Controller.controls.stop();
             checkBox1.Checked = false;
+            NowPlaying.Hide();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -183,6 +185,11 @@ namespace WindowsFormsApplication2
 
         private void SongName_Click(object sender, EventArgs e)
         {
+        }
+
+        private void NowPlaying_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

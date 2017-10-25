@@ -205,6 +205,7 @@
             this.NowPlaying.Size = new System.Drawing.Size(154, 29);
             this.NowPlaying.TabIndex = 6;
             this.NowPlaying.Text = "Now Playing:";
+            this.NowPlaying.Click += new System.EventHandler(this.NowPlaying_Click);
             // 
             // pictureBox1
             // 
