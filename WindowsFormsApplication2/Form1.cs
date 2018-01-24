@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
         string[] MusicInFolder;
         string[] AMusicName;
         string Musics;
-        bool selected;
+        bool paused;
         SoundPlayer soundPlayer;
         OpenFileDialog file = new OpenFileDialog();
         WindowsMediaPlayer Controller = new WindowsMediaPlayer();
@@ -60,21 +60,30 @@ namespace WindowsFormsApplication2
                     Controller.controls.play();
                     NowPlaying.Text = "Now Playing: " + lastMusicName;
                     NowPlaying.Show();
+                    paused = false;
                 }
                 else
                 {
                     Controller.controls.play();
+                    paused = false;
                 }
             }
         }
 
         private void Pause_Click_1(object sender, EventArgs e)
         {
-            
             checkBox1.Checked = true;
-            Controller.controls.pause();
+            if (paused == false)
+            {
+                Controller.controls.pause();
+                paused = true;
+            }
+            else
+            {
+                Controller.controls.play();
+                paused = false;
+            }
         }
-
         private void Stop_Click(object sender, EventArgs e)
         {
             Controller.controls.stop();
@@ -124,6 +133,7 @@ namespace WindowsFormsApplication2
                 lastMusicName = System.IO.Path.GetFileNameWithoutExtension(file.FileName);
                 lastMusicName = Regex.Replace(lastMusicName, @"[\d-]", "");
                 SongName.Text = "Selected Song: " + lastMusicName.Replace("_", " ");
+                listBox1.DisplayMember = "Name";
                 listBox1.Items.Add(lastMusicPath);
             }
                 
@@ -133,7 +143,7 @@ namespace WindowsFormsApplication2
         private void SearchFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
-            folder.Description = "Music Folder";
+            folder.Description = "Select a Music folder.";
 
 
             if (folder.ShowDialog() == DialogResult.OK)
@@ -185,6 +195,7 @@ namespace WindowsFormsApplication2
 
         private void SongName_Click(object sender, EventArgs e)
         {
+
         }
 
         private void NowPlaying_Click(object sender, EventArgs e)
